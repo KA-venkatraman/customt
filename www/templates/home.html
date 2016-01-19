@@ -1,19 +1,13 @@
-<ion-view view-title="home" name="home">
+<ion-view view-title="" name="home">
+	<ion-nav-bar class="bar-positive" ng-style="{'background-color': viewColor}">
+	    <ion-nav-buttons side="right">
+	    	<span ng-switch="user.loginType">
+		    	<span ng-switch-when="google" class="button button-clear icon-left ion-log-out" ng-click="showGoogleLogOutMenu()">Sign out&nbsp;<img src="{{user.picture}}" height="30" width="30"></img></span>
+		    	<span ng-switch-when="facebook" class="button button-clear icon-left ion-log-out" ng-click="showFBLogOutMenu()">Sign out&nbsp;<img src="{{user.picture}}" height="30" width="30"></img></span>
+		    </span>
+	    </ion-nav-buttons>
+  	</ion-nav-bar>
   <ion-content class="padding">
-  	<div class="row">
-  		<div class="col">
-  			<img src="{{user.picture}}" height="80" width="80"></img>
-  		</div>
-  		<div class="col">
-  			<h4>Welcome </h4>
-  		</div>
-  		<div class="col">
-  			<h3>{{user.name}}</h3>
-  		</div>
-  	</div>
-  	<div ng-switch="user.loginType" class="row">
-    	<a ng-switch-when="google" class="button button-assertive button-block button-outline" ng-click="showGoogleLogOutMenu()">Log Out</a>
-       	<a ng-switch-when="facebook" class="button button-assertive button-block button-outline" ng-click="showFBLogOutMenu()">Log Out</a>
-    <div>
+  	You're logged in as <b>{{user.name}}</b>
   </ion-content>
 </ion-view>

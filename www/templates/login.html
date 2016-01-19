@@ -1,6 +1,41 @@
-<ion-view view-title="login" name="login">
-  <ion-content class="padding">
-    <a class="google-sign-in button button-block" ng-click="googleSignIn()">Sign in with Google</a>
-    <a class="facebook-sign-in button button-block" ng-click="facebookSignIn()">Login with Facebook</a>
+<ion-view view-title="" name="login">
+  <ion-nav-bar class="bar-positive" ng-style="{'background-color': viewColor}">
+    <ion-nav-buttons side="primary">
+      <!-- <button class="button button-dark icon-right ion-log-out"><b>Exit</b></button> -->
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="padding text-center">
+  	<img src="img/customT_logo.png" width="30%"></img>
+	<div class="list">
+	  <label class="item item-input">
+	    <input type="text" placeholder="Email">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" placeholder="Password">
+	  </label>
+	  <br/>
+	  <button class="button button-medium button-assertive">
+		Login
+	  </button>
+	  <br/><br/>
+	  <div class="row">
+	  <div class="col">
+	  	<a href="#">Forgot password?</a>
+	  </div>
+	  <div class="col"></div>
+	  <div class="col">
+	  	<a href="#">Don't have an account?</a>
+	  </div>
+	</div>
+	<table width="100%">
+	  <tr>
+	    <td><hr /></td>
+	    <td style="width:1px; padding: 0 5px; white-space: nowrap;">OR</td>
+	    <td><hr /></td>
+	  </tr>
+	</table>
+	<br/>
+	<a class="google-sign-in" ng-click="googleSignIn()"><img width="70%" src="img/google_plus_signin_button.png"></img></a><br/>
+	<a class="facebook-sign-in" ng-click="facebookSignIn()"><!-- <span class="fb-login-button" size="xlarge"></span> --><img src="img/facebook_signin_button.png" width="70%"></img></a>
   </ion-content>
 </ion-view>

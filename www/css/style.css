@@ -1,1 +1,3 @@
-/* Empty. Add your own CSS if you like */
+.nav-bar-block, .bar {
+  background-color: inherit !important;
+}

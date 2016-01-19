@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('LoginCtrl', function($scope, $state, $q, UserService, $ionicLoading, $ionicHistory) {
+.controller('LoginCtrl', function($scope, $state, $q, UserService, $ionicLoading, $ionicHistory, $rootScope) {
   // This is the success callback from the login method
   var fbLoginSuccess = function(response) {
     if (!response.authResponse){
@@ -133,15 +133,19 @@ angular.module('starter.controllers', [])
     );
   };
 
+  $scope.$on('$ionicView.beforeEnter', function() {
+    $rootScope.viewColor = '#C41E3A';
+  }); 
+
 })
 
-.controller('HomeCtrl', function($scope, UserService, $ionicActionSheet, $state, $ionicLoading){
+.controller('HomeCtrl', function($scope, UserService, $ionicActionSheet, $state, $ionicLoading, $rootScope){
   $scope.user = UserService.getUser();
 
   $scope.showFBLogOutMenu = function() {
     var hideSheet = $ionicActionSheet.show({
       destructiveText: 'Logout',
-      titleText: 'Are you sure you want to logout? This app is awsome so I recommend you to stay.',
+      titleText: 'Are you sure you want to logout?',
       cancelText: 'Cancel',
       cancel: function() {},
       buttonClicked: function(index) {
@@ -167,7 +171,7 @@ angular.module('starter.controllers', [])
   $scope.showGoogleLogOutMenu = function() {
     var hideSheet = $ionicActionSheet.show({
       destructiveText: 'Logout',
-      titleText: 'Are you sure you want to logout? This app is awsome so I recommend you to stay.',
+      titleText: 'Are you sure you want to logout?',
       cancelText: 'Cancel',
       cancel: function() {},
       buttonClicked: function(index) {
@@ -191,5 +195,9 @@ angular.module('starter.controllers', [])
       }
     });
   };
+
+  $scope.$on('$ionicView.beforeEnter', function() {
+    $rootScope.viewColor = '#C41E3A';
+  }); 
 
 });
