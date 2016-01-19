@@ -40,3 +40,5 @@
     <splash src="resources/android/splash/drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi"/>
   </platform>
 </widget>
+<!-- Add this line to android platform's build.gradle (Patch for Google+ sign in) -->
+<!-- configurations { all*.exclude group: 'com.android.support', module: 'support-v4' } -->
