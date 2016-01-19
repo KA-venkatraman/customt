@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('LoginCtrl', function($scope, $state, $q, UserService, $ionicLoading) {
+.controller('LoginCtrl', function($scope, $state, $q, UserService, $ionicLoading, $ionicHistory) {
   // This is the success callback from the login method
   var fbLoginSuccess = function(response) {
     if (!response.authResponse){
@@ -18,10 +18,11 @@ angular.module('starter.controllers', [])
         userID: profileInfo.id,
         name: profileInfo.name,
         email: profileInfo.email,
-        picture : "http://graph.facebook.com/" + authResponse.userID + "/picture?type=large"
+        picture : "http://graph.facebook.com/" + authResponse.userID + "/picture?type=large",
+        loginType: 'facebook'
       });
       $ionicLoading.hide();
-      $state.go('tab.home');
+      $ionicHistory.clearCache().then(function(){$state.go('tab.home')});
     }, function(fail){
       // Fail get profile info
       console.log('profile info fail', fail);
@@ -61,7 +62,7 @@ angular.module('starter.controllers', [])
         console.log('getLoginStatus', success.status);
 
         // Check if we have our user saved
-        var user = UserService.getUser('facebook');
+        var user = UserService.getUser();
 
         if(!user.userID){
           getFacebookProfileInfo(success.authResponse)
@@ -72,10 +73,11 @@ angular.module('starter.controllers', [])
               userID: profileInfo.id,
               name: profileInfo.name,
               email: profileInfo.email,
-              picture : "http://graph.facebook.com/" + success.authResponse.userID + "/picture?type=large"
+              picture : "http://graph.facebook.com/" + success.authResponse.userID + "/picture?type=square",
+              loginType: 'facebook'
             });
 
-            $state.go('tab.home');
+            $ionicHistory.clearCache().then(function(){$state.go('tab.home')});
           }, function(fail){
             // Fail get profile info
             console.log('profile info fail', fail);
@@ -118,11 +120,12 @@ angular.module('starter.controllers', [])
           email: user_data.email,
           picture: user_data.imageUrl,
           accessToken: user_data.accessToken,
-          idToken: user_data.idToken
+          idToken: user_data.idToken,
+          loginType: 'google'
         });
 
         $ionicLoading.hide();
-        $state.go('tab.home');
+        $ionicHistory.clearCache().then(function(){$state.go('tab.home')});
       },
       function (msg) {
         $ionicLoading.hide();

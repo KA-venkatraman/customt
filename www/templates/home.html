@@ -1,6 +1,19 @@
 <ion-view view-title="home" name="home">
   <ion-content class="padding">
-    <a class="button button-assertive button-block button-outline" ng-click="showGoogleLogOutMenu()">Log Out</a>
-    <a class="button button-assertive button-block button-outline" ng-click="showFBLogOutMenu()">Log Out</a>
+  	<div class="row">
+  		<div class="col">
+  			<img src="{{user.picture}}" height="80" width="80"></img>
+  		</div>
+  		<div class="col">
+  			<h4>Welcome </h4>
+  		</div>
+  		<div class="col">
+  			<h3>{{user.name}}</h3>
+  		</div>
+  	</div>
+  	<div ng-switch="user.loginType" class="row">
+    	<a ng-switch-when="google" class="button button-assertive button-block button-outline" ng-click="showGoogleLogOutMenu()">Log Out</a>
+       	<a ng-switch-when="facebook" class="button button-assertive button-block button-outline" ng-click="showFBLogOutMenu()">Log Out</a>
+    <div>
   </ion-content>
 </ion-view>
