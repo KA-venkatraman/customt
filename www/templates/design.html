@@ -1,0 +1,18 @@
+<ion-view view-title="" name="design">
+	<ion-nav-bar class="bar-positive" ng-style="{'background-color': viewColor}">
+	    <ion-nav-buttons side="right">
+	    	<span ng-switch="user.loginType">
+		    	<span ng-switch-when="google" class="button button-clear icon-left ion-log-out" ng-click="showGoogleLogOutMenu()">Sign out&nbsp;<img src="{{user.picture}}" height="30" width="30"></img></span>
+		    	<span ng-switch-when="facebook" class="button button-clear icon-left ion-log-out" ng-click="showFBLogOutMenu()">Sign out&nbsp;<img src="{{user.picture}}" height="30" width="30"></img></span>
+		    </span>
+	    </ion-nav-buttons>
+  	</ion-nav-bar>
+  <ion-content class="padding">
+	<div class="row text-left" ng-repeat="view in views">
+		<span class="button button-outline"><img src="img/{{view}}" width="60" height="120"></img></span>
+	</div>
+	<!-- <div class="row" ng-repeat="view in views">
+		<img src="img/{{view}}"></img>
+	</div> -->
+  </ion-content>
+</ion-view>

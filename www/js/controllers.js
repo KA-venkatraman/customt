@@ -196,8 +196,78 @@ angular.module('starter.controllers', [])
     });
   };
 
+  $scope.proceedToDesign = function(color_choice){
+    window.alert(color_choice);
+    $state.go('tab.design', {'choice': color_choice});
+  }
+
   $scope.$on('$ionicView.beforeEnter', function() {
     $rootScope.viewColor = '#C41E3A';
   }); 
+
+})
+
+.controller('DesignCtrl', function($scope, UserService, $ionicActionSheet, $state, $ionicLoading, $rootScope, $stateParams){
+  $scope.user = UserService.getUser();
+  var color = $stateParams.choice;
+  $scope.views = [color+"_front.png", color+"_back.png", color+"_left.png", color+"_right.png"];
+
+  $scope.$on('$ionicView.beforeEnter', function() {
+    $rootScope.viewColor = '#C41E3A';
+  });
+
+  $scope.showFBLogOutMenu = function() {
+    var hideSheet = $ionicActionSheet.show({
+      destructiveText: 'Logout',
+      titleText: 'Are you sure you want to logout?',
+      cancelText: 'Cancel',
+      cancel: function() {},
+      buttonClicked: function(index) {
+        return true;
+      },
+      destructiveButtonClicked: function(){
+        $ionicLoading.show({
+          template: 'Logging out...'
+        });
+
+        // Facebook logout
+        facebookConnectPlugin.logout(function(){
+          $ionicLoading.hide();
+          $state.go('tab.login');
+        },
+        function(fail){
+          $ionicLoading.hide();
+        });
+      }
+    });
+  };
+
+  $scope.showGoogleLogOutMenu = function() {
+    var hideSheet = $ionicActionSheet.show({
+      destructiveText: 'Logout',
+      titleText: 'Are you sure you want to logout?',
+      cancelText: 'Cancel',
+      cancel: function() {},
+      buttonClicked: function(index) {
+        return true;
+      },
+      destructiveButtonClicked: function(){
+        $ionicLoading.show({
+          template: 'Logging out...'
+        });
+        // Google logout
+        window.plugins.googleplus.logout(
+          function (msg) {
+            console.log(msg);
+            $ionicLoading.hide();
+            $state.go('tab.login');
+          },
+          function(fail){
+            console.log(fail);
+          }
+        );
+      }
+    });
+  };
 
 });

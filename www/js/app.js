@@ -58,6 +58,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           controller: 'HomeCtrl'
         }
       }
+    })
+
+  .state('tab.design', {
+      url: '/design',
+      views: {
+        'tab-design': {
+          templateUrl: 'templates/design.html',
+          controller: 'DesignCtrl'
+        }
+      },
+      params: {
+        'choice' : 'black'
+      }
     });
 
   // if none of the above states are matched, use this as the fallback

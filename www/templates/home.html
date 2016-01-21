@@ -8,6 +8,15 @@
 	    </ion-nav-buttons>
   	</ion-nav-bar>
   <ion-content class="padding">
-  	You're logged in as <b>{{user.name}}</b>
+  	You're logged in as <b>{{user.name}}</b>. Choose a color to proceed!
+	<ion-list>
+	  <ion-radio ng-model="color_choice" ng-value="'black'"><span><img src="img/black_front.png" height="60" width="60"></img></span></ion-radio>
+	  <ion-radio ng-model="color_choice" ng-value="'dark_blue'"><span><img src="img/dark_blue_front.png" height="60" width="60"></img></span></ion-radio>
+	  <ion-radio ng-model="color_choice" ng-value="'red'"><span><img src="img/red_front.png" height="60" width="60"></img></span></ion-radio>
+	</ion-list>
+	<br/>
+	<div class="text-right">
+		<span class="button button-assertive" ng-click="proceedToDesign(color_choice)">Proceed</span>
+	</div>
   </ion-content>
 </ion-view>
