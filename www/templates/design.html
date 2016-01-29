@@ -7,12 +7,74 @@
 		    </span>
 	    </ion-nav-buttons>
   	</ion-nav-bar>
-  <ion-content class="padding">
-	<div class="row text-left" ng-repeat="view in views">
+  	<ion-side-menus>
+	  <!-- Left menu -->
+	  <ion-side-menu side="left" width="{{0.6 * screenWidth}}" ng-style="{'background-color': sideMenuColor}">
+	  	<ion-content>
+	  		Sample Text<br/>
+	  		Sample Text<br/>
+	  		Sample Text<br/>
+	  		Sample Text<br/>
+	  		Sample Text<br/>
+	  		Sample Text<br/>
+	  	</ion-content>
+	  </ion-side-menu>
+
+	  <ion-side-menu-content>
+	  <!-- Main content, usually <ion-nav-view> -->
+	  	<ion-content>
+	        <ion-tabs class="tabs-striped tabs-color-assertive">
+
+	            <!-- Front Tab -->
+	            <ion-tab title="Front" ui-sref="#/subtab/front">
+	                <ion-nav-view name="subtab-front">
+	                    <ion-content class="padding text-center">
+	                        <span><img src="img/{{views[0]}}" width="90%" height="80%"></img></span>
+	                    </ion-content>
+	                </ion-nav-view>
+	            </ion-tab>
+
+	            <!-- Back Tab -->
+	            <ion-tab title="Back" ui-sref="#/subtab/back">
+	                <ion-nav-view>
+	                   <ion-content class="padding text-center">
+	                        <span><img src="img/{{views[1]}}" width="90%" height="80%"></img></span>
+	                    </ion-content>
+	                </ion-nav-view>
+	            </ion-tab>
+
+	            <!-- Left Tab -->
+	            <ion-tab title="Left" ui-sref="#/subtab/left">
+	                <ion-nav-view name="subtab-left">
+	                    <ion-content class="padding text-center">
+	                        <span><img src="img/{{views[2]}}" width="60%" height="80%"></img></span>
+	                    </ion-content>
+	                </ion-nav-view>
+	            </ion-tab>
+
+	            <!-- Right Tab -->
+	            <ion-tab title="Right" ui-sref="#/subtab/right">
+	                <ion-nav-view name="subtab-right">
+	                   <ion-content class="padding text-center">
+	                        <span><img src="img/{{views[3]}}" width="60%" height="80%"></img></span>
+	                    </ion-content>
+	                </ion-nav-view>
+	            </ion-tab>
+	        </ion-tabs>
+
+	    </ion-content>
+	  </ion-side-menu-content>
+
+	</ion-side-menus>
+
+
+  	<!-- <ion-content class="padding"> -->
+	  	
+	<!-- <div class="row text-left" ng-repeat="view in views">
 		<span class="button button-outline"><img src="img/{{view}}" width="60" height="120"></img></span>
-	</div>
+	</div> -->
 	<!-- <div class="row" ng-repeat="view in views">
 		<img src="img/{{view}}"></img>
 	</div> -->
-  </ion-content>
+  <!-- </ion-content> -->
 </ion-view>

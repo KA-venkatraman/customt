@@ -71,7 +71,48 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       params: {
         'choice' : 'black'
       }
+    })
+
+  .state('subtab.front', {
+      url: '/design',
+      views: {
+        'subtab-front': {
+          templateUrl: 'templates/design.html',
+          controller: 'DesignCtrl'
+        }
+      }
+    })
+
+  .state('subtab.back', {
+      url: '/design',
+      views: {
+        'subtab-back': {
+          templateUrl: 'templates/design.html',
+          controller: 'DesignCtrl'
+        }
+      }
+    })
+
+  .state('subtab.left', {
+      url: '/design',
+      views: {
+        'subtab-left': {
+          templateUrl: 'templates/design.html',
+          controller: 'DesignCtrl'
+        }
+      }
+    })
+
+  .state('subtab.right', {
+      url: '/design',
+      views: {
+        'subtab-right': {
+          templateUrl: 'templates/design.html',
+          controller: 'DesignCtrl'
+        }
+      }
     });
+
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/login');

@@ -197,7 +197,6 @@ angular.module('starter.controllers', [])
   };
 
   $scope.proceedToDesign = function(color_choice){
-    window.alert(color_choice);
     $state.go('tab.design', {'choice': color_choice});
   }
 
@@ -207,14 +206,20 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('DesignCtrl', function($scope, UserService, $ionicActionSheet, $state, $ionicLoading, $rootScope, $stateParams){
+.controller('DesignCtrl', function($scope, UserService, $ionicActionSheet, $state, $ionicLoading, $rootScope, $stateParams, $ionicSideMenuDelegate){
+  $rootScope.screenWidth = ((window.innerWidth > 0) ? window.innerWidth : screen.width);
   $scope.user = UserService.getUser();
   var color = $stateParams.choice;
   $scope.views = [color+"_front.png", color+"_back.png", color+"_left.png", color+"_right.png"];
 
   $scope.$on('$ionicView.beforeEnter', function() {
     $rootScope.viewColor = '#C41E3A';
+    $rootScope.sideMenuColor = '#C41E3A';
   });
+
+  $scope.toggleLeft = function() {
+    $ionicSideMenuDelegate.toggleLeft();
+  };
 
   $scope.showFBLogOutMenu = function() {
     var hideSheet = $ionicActionSheet.show({
